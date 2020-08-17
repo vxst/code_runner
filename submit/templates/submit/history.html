@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8">
+        <title>Submit Interface for VXST Runner</title>
+        <meta name="description" content="The index of submit interface">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/static/bulma.min.css">
+        <style>
+        pre{
+            font-family: Consolas;
+        }
+        </style>
+    </head>
+    
+    <body>
+        <section class="hero is-info is-large">
+            <div class="hero-head">
+                <nav class="navbar">
+                    <div class="container">
+                        <div class="navbar-brand">
+                            <a class="navbar-item">
+                                <span>VXST Runner</span>
+                            </a>
+                            <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </div>
+                        <div id="navbarMenuHeroB" class="navbar-menu">
+                            <div class="navbar-end">
+                                <a class="navbar-item is-active">
+                                    Submit System
+                                </a>
+                                <a class="navbar-item" href="/admin">
+                                    Admin
+                                </a>
+                                <a class="navbar-item" href="/accounts/logout">Log out</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+    
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <p class="title">
+                        VXST Runner
+                    </p>
+                    <p class="subtitle">
+                        Submit and Result System
+                    </p>
+                </div>
+            </div>
+    
+            <div class="hero-foot">
+                <nav class="tabs is-boxed is-fullwidth">
+                    <div class="container">
+                        <ul>
+                            <li>
+                                <a href='/submit'>Overview</a>
+                            </li>
+                            <li>
+                                <a href='/submit/running'>Current Running</a>
+                            </li>
+                            <li class='is-active'>
+                                <a>History</a>
+                            </li>
+                            <li>
+                                <a href='/submit/submit'>Submit</a>
+                            </li>
+                            <li>
+                                <a href='/admin'>Manage</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </section>
+        <div class="columns is-centered is-mobile">
+            <div class="column is-four-fifths">
+                <div class="content">
+                    <br>
+                    {% if history_list %}
+                        <ul>
+                        {% for job in history_list %}
+                            <li><a href="/submit/history/{{job.id}}">{{job.format_time}}: {{job}}</a></li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>
+                            No history yet.
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </main>
+        
+        <script src="/static/bulma.js"></script>
+    </body>
+ </html>
